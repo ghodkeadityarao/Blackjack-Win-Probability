@@ -35,8 +35,23 @@ Calculating the exact probabilities in blackjack can be quite complex due to the
 
 In the first case, when the dealer's card is shown, calculating the probability(in %) of winning in blackjack involves considering the player's hand value and the dealer's visible card. By analyzing these factors, the player can estimate their chances of winning based on potential outcomes.
 
-![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/6f1dc937-be43-4deb-a898-1676ad907a0e)
+**Dealer's final hand, % of hands (by dealer's first card)**
 
+| Dealer card   |   Bust |   17 |   18 |   19 |   20 |   21 |
+|:--------------|-------:|-----:|-----:|-----:|-----:|-----:|
+| A             |   16.7 | 18.8 | 18.9 | 18.9 | 18.9 |  7.7 |
+| 2             |   35.4 | 14   | 13.5 | 13   | 12.4 | 11.8 |
+| 3             |   37.4 | 13.4 | 13.1 | 12.5 | 12.1 | 11.5 |
+| 4             |   39.6 | 13.1 | 12.4 | 12.1 | 11.6 | 11.2 |
+| 5             |   41.8 | 12.2 | 12.2 | 11.7 | 11.2 | 10.8 |
+| 6             |   42.3 | 16.6 | 10.6 | 10.7 | 10.2 |  9.7 |
+| 7             |   26.2 | 36.9 | 13.8 |  7.9 |  7.9 |  7.4 |
+| 8             |   24.4 | 12.9 | 36   | 12.9 |  6.9 |  7   |
+| 9             |   22.9 | 12.1 | 11.7 | 35.2 | 12   |  6.1 |
+| 10            |   23   | 12.1 | 12.1 | 12.2 | 36.8 |  3.8 |
+| J             |   23   | 12.1 | 12.1 | 12.1 | 36.8 |  3.8 |
+| Q             |   23   | 12.1 | 12.1 | 12.1 | 36.9 |  3.8 |
+| K             |   23   | 12.1 | 12.1 | 12.1 | 36.8 |  3.8 |
 
 In the second case, when the dealer's card is shown and the player has two initial cards, the probabilities change based on whether the player chooses to "hit" (take an additional card) or "stand" (keep the current hand). 
 
@@ -44,11 +59,78 @@ If the player chooses "hit," the probability of winning depends on the likelihoo
 
 If the player opts to "stand," the probability of winning is determined by the dealer's eventual hand and whether it surpasses 21 or not.
 
-![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/7054280d-f836-448a-8650-a98db3037e54)
+**Win %, if you stand on a total (rows) against the dealer's first card (columns).** Push and loss are in `Dataset2_push_clean.csv` and `Dataset2_loss_clean.csv`.
 
-In both scenarios, the probabilities are influenced by card distribution, the composition of the deck, and the player's strategy. Understanding these probabilities can assist players in making informed decisions to enhance their chances of winning in the game of blackjack.hrough extensive simulations and calculations to maximize your chances of winning over the long term.
+|   Your total |    A |    2 |    3 |    4 |    5 |    6 |    7 |    8 |    9 |   10 |    J |    Q |    K |
+|-------------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+|            4 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|            5 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|            6 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|            7 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|            8 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|            9 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           10 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           11 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           12 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           13 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           14 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           15 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           16 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           17 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+|           18 | 35.5 | 49.3 | 50.9 | 52.6 | 54.1 | 58.9 | 63.1 | 37.2 | 35   | 35.2 | 35.2 | 35.1 | 35.1 |
+|           19 | 54.4 | 62.7 | 63.9 | 65   | 66.3 | 69.5 | 76.9 | 73.3 | 46.7 | 47.2 | 47.3 | 47.2 | 47.2 |
+|           20 | 73.3 | 75.7 | 76.4 | 77.1 | 78.1 | 80.1 | 84.8 | 86.1 | 81.9 | 59.4 | 59.4 | 59.4 | 59.4 |
+|           21 | 92.3 | 88.1 | 88.5 | 88.8 | 89.2 | 90.3 | 92.6 | 93.1 | 93.9 | 96.2 | 96.2 | 96.2 | 96.2 |
 
-For precise probabilities in specific scenarios, you might need to use computer simulations or mathematical models that take into account the composition of the remaining deck and potential outcomes of each decision. Keep in mind that blackjack probabilities are influenced by various factors, including the number of decks in play and the specific rules of the game being used.
+
+# Rules and Accuracy Check
+
+These tables are made by Monte Carlo simulation under these rules:
+
+- **A real shoe.** Cards are dealt from a 6-deck shoe without replacement, so the cards already on the table are taken out first. The dealer's first card is always removed. The "hit once" table also removes your two cards. The "stand" table does not, because a total does not tell us which cards made it.
+- **The dealer peeks.** With an ace or a ten-value card showing, the dealer checks for blackjack first. Hands where the dealer has blackjack are left out, so every probability is for a hand that is still being played. That is why a dealer ace shows only 7.7% for a final 21. How often the dealer actually has blackjack is not in the tables: about 31% with an ace showing and 7.7% with a ten.
+- **The dealer's play.** The dealer stands on every 17, including soft 17. An ace counts as 11 whenever that does not bust the hand.
+- **Win, push and loss are separate.** A tie is a push, not a win. The `*_clean.csv` files hold the win %, the `*_push_clean.csv` files the push %, and the `*_loss_clean.csv` files the loss %. The three add up to 100.
+- **"Hit" means one card, then stand.** The hit table (Dataset 3) is "hit once, then stand". It is not the odds of the best play after hitting. Going over 21 is a loss.
+- **Not covered:** your own blackjack (A plus a ten-value card, which pays 3:2), doubling, splitting and surrender.
+
+Every number was then checked against an exact calculation of the same rules (a recursion over every possible dealer hand with the real shoe composition), with no simulation involved (`Blackjack win/main/check_tables.py` reproduces this table):
+
+| Table | Numbers checked | Average error | Worst error |
+|---|---|---|---|
+| Dealer's final hand (Dataset 1) | 78 | 0.01 points | 0.04 points |
+| Stand: win, push, loss (Dataset 2) | 702 | 0.01 points | 0.06 points |
+| Hit once: win, push, loss (Dataset 3) | 6,591 | 0.13 points | 0.74 points |
+
+What is left is simulation noise. The hit table averages 10 runs while the others average 500, which is why its error is the largest.
+
+## What was wrong in the first version
+
+The first version was checked the same way (under its own infinite-deck rules): 325 of its 2,405 numbers (13.5%) were more than 2 points off, with an average error of 1.02 points and a worst error of 22.6 points.
+
+1. **Dealer with an ace (`getsum`).** The branches that handle an ace disagreed on whether the dealer stands or hits on soft 17, so hands ending on 17 were mis-counted. For a dealer ace, a final 17 appeared 0.7% of the time instead of about 13%, and for a dealer 6 it was off by about 9 points.
+2. **Hitting a pair of aces (`hit`).** The test `card1 != 'A' or card2 != 'A'` should have been `and`. Because of this, the pair of aces skipped the draw and always returned 12, an average error of 16 points on that row (up to 22.6 points against a dealer 7).
+3. **Ties counted as wins.** The "win %" included pushes, so standing on 21 showed 100%.
+4. **Infinite deck and no peek.** Cards were drawn with replacement, and a dealer blackjack was counted as an ordinary 21.
+5. **File paths in the GUI.** The files used Windows-style `\\` paths, so the app crashed on Mac and Linux. They now resolve relative to the script.
+
+# Run It
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py                      # the web app
+cd "Blackjack win/main"
+python check_tables.py                    # checks every table against the exact calculation (about 3 s)
+python dataset1_creation.py               # rebuilds Dataset 1 (under 1 min)
+python dataset2_creation.py               # rebuilds Dataset 2 (under 1 min)
+python dataset3_creation.py               # rebuilds Dataset 3 (under 2 min)
+```
+
+Each script writes its raw files and its cleaned (averaged) files to `Blackjack win/datasets/`.
+
+The web app (`app.py`) takes the dealer's first card and your two cards and shows the win, push and lose chances if you stand or hit once, and how the dealer's hand ends. It reads the cleaned tables, so it needs nothing but the repo. To put it online for free, sign in to [Streamlit Community Cloud](https://streamlit.io/cloud) with GitHub, choose this repo and set the main file to `app.py`.
+
+The original Tkinter app is still in `Blackjack win/main/` (`GUI_homepage.py`). It has not been updated for the push and loss tables and the web app replaces it.
 
 # The Interface
 

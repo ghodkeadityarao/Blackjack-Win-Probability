@@ -5,6 +5,8 @@ from tkinter import ttk, filedialog
 from tkinter.filedialog import askopenfile
 import os
 
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 window = tkinter.Tk()
 window.title("Blackjack Prediction")
 window.geometry('1536x864')
@@ -16,7 +18,7 @@ def open_file_1():
 def open_file_2():
     window.destroy()
     import GUI2_page2
-bg = PhotoImage(file = "Blackjack win\\datasets\\img1.png")
+bg = PhotoImage(file = os.path.join(BASE, "..", "images", "img1.png"))
 
 labelimg = Label(window, image = bg)
 frame = tkinter.Frame(bg='#333333')

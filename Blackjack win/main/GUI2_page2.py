@@ -1,3 +1,4 @@
+import os
 import tkinter
 from tkinter import messagebox
 from tkinter import *
@@ -5,13 +6,15 @@ import random
 import pandas as pd
 
 
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 window = tkinter.Tk()
 window.title("Dealer + Player Cards")
 window.geometry('1536x864')
 window.configure(bg='#333333')
 
 
-bg = PhotoImage(file = "Blackjack win\\datasets\\img1.png")
+bg = PhotoImage(file = os.path.join(BASE, "..", "images", "img1.png"))
 
 labelimg = Label(window, image = bg)
 frame = tkinter.Frame(bg='#333333')
@@ -52,12 +55,12 @@ def submit():
     t = str(sum)
     t1.insert(tkinter.END, t)
     
-    df = pd.read_csv("Blackjack win\\datasets\\Dataset2_clean.csv")
+    df = pd.read_csv(os.path.join(BASE, "..", "datasets", "Dataset2_clean.csv"))
     z = card_dic[c1] + card_dic[c2]
     a = df.loc[df["sum"] == z][d]
     t2.insert(tkinter.END, a)
 
-    df1 = pd.read_csv("Blackjack win\\datasets\\Dataset3_clean.csv")
+    df1 = pd.read_csv(os.path.join(BASE, "..", "datasets", "Dataset3_clean.csv"))
     r1 = c1+c2
     b = df1.loc[df1["sum1"] == r1][d]
     t3.insert(tkinter.END, b)

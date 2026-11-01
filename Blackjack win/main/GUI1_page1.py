@@ -4,13 +4,15 @@ import os
 import pandas as pd
 
 
+BASE = os.path.dirname(os.path.abspath(__file__))
+
 window = tkinter.Tk()
 window.title("Dealer Card")
 window.geometry('1536x864')
 window.configure(bg='#333333')
 
 
-bg = PhotoImage(file = "Blackjack win/images/img1.png")
+bg = PhotoImage(file = os.path.join(BASE, "..", "images", "img1.png"))
 
 
 labelimg = Label(window, image = bg)
@@ -34,7 +36,7 @@ def back():
 
 def submit():
     c = card1.get()
-    df = pd.read_csv("Blackjack win\\datasets\\Dataset1_clean.csv")
+    df = pd.read_csv(os.path.join(BASE, "..", "datasets", "Dataset1_clean.csv"))
     a = df.loc[df["card"] == c]
     t1.insert(tkinter.END, a)
 
