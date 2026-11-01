@@ -1,5 +1,7 @@
 # BlackJack_Win_Probability
 
+**Live app:** [https://your-app-name.streamlit.app](https://blackjackwinprobability.streamlit.app/)
+
 Simulated blackjack odds: the chance of winning, pushing and losing a hand against every dealer card, from a 6-deck shoe with the dealer peeking for blackjack. Every number is checked against an exact calculation (worst error 0.74 percentage points). Try it with `streamlit run app.py`.
 
 For example, with an 18 (an 8 and a 10) against a dealer 6:
@@ -123,21 +125,4 @@ python dataset3_creation.py               # rebuilds Dataset 3 (under 2 min)
 
 Each script writes its raw files and its cleaned (averaged) files to `Blackjack win/datasets/`.
 
-The web app (`app.py`) takes the dealer's first card and your two cards and shows the win, push and lose chances if you stand or hit once, and how the dealer's hand ends. It reads the cleaned tables, so it needs nothing but the repo. To put it online for free, sign in to [Streamlit Community Cloud](https://streamlit.io/cloud) with GitHub, choose this repo and set the main file to `app.py`.
-
-The original Tkinter app is still in `Blackjack win/main/` (`GUI_homepage.py`). It has not been updated for the push and loss tables and the web app replaces it.
-
-# The Original Tkinter Interface
-
-These screenshots are from the first version. The web app (`app.py`) replaces it.
-
-HOMEPAGE DESIGN
-![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/129a0aa7-77b9-4866-9f58-556199cffe36)
-
-FIRST PAGE (CASE 1)
-![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/8be93cbe-4a15-452f-8bc4-7ba5cd2fc744)
-
-SECOND PAGE (CASE 2)
-![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/ca14ffa1-81f8-49d4-a9e5-0b67a7dce505)
-
-
+The web app (`app.py`) takes the dealer's first card and your two cards and shows the win, push and lose chances if you stand or hit once, and how the dealer's hand ends. It reads the cleaned tables, so it needs nothing but the repo.
