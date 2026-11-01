@@ -1,5 +1,14 @@
 # BlackJack_Win_Probability
 
+Simulated blackjack odds: the chance of winning, pushing and losing a hand against every dealer card, from a 6-deck shoe with the dealer peeking for blackjack. Every number is checked against an exact calculation (worst error 0.74 percentage points). Try it with `streamlit run app.py`.
+
+For example, with an 18 (an 8 and a 10) against a dealer 6:
+
+| Play | Win | Push | Lose |
+|---|---|---|---|
+| Stand on 18 | 58.9% | 10.6% | 30.5% |
+| Hit once, then stand | 18.6% | 2.5% | 78.9% |
+
 Blackjack, also known as 21, is a popular card game often played in casinos. The goal of the game is to beat the dealer by having a hand value that is closer to 21 than the dealer's hand value, without exceeding 21. Here are the basic rules of the game:
 
 # Card Values:
@@ -59,29 +68,15 @@ If the player chooses "hit," the probability of winning depends on the likelihoo
 
 If the player opts to "stand," the probability of winning is determined by the dealer's eventual hand and whether it surpasses 21 or not.
 
-**Win %, if you stand on a total (rows) against the dealer's first card (columns).** Push and loss are in `Dataset2_push_clean.csv` and `Dataset2_loss_clean.csv`.
+**Win %, if you stand on a total (rows) against the dealer's first card (columns).** Push and loss are in `Dataset2_push_clean.csv` and `Dataset2_loss_clean.csv`. Totals of 17 or less all give the same chance, because the dealer always ends on 17 or more, so you only win if the dealer busts.
 
-|   Your total |    A |    2 |    3 |    4 |    5 |    6 |    7 |    8 |    9 |   10 |    J |    Q |    K |
-|-------------:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
-|            4 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|            5 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|            6 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|            7 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|            8 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|            9 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           10 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           11 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           12 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           13 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           14 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           15 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           16 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           17 | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
-|           18 | 35.5 | 49.3 | 50.9 | 52.6 | 54.1 | 58.9 | 63.1 | 37.2 | 35   | 35.2 | 35.2 | 35.1 | 35.1 |
-|           19 | 54.4 | 62.7 | 63.9 | 65   | 66.3 | 69.5 | 76.9 | 73.3 | 46.7 | 47.2 | 47.3 | 47.2 | 47.2 |
-|           20 | 73.3 | 75.7 | 76.4 | 77.1 | 78.1 | 80.1 | 84.8 | 86.1 | 81.9 | 59.4 | 59.4 | 59.4 | 59.4 |
-|           21 | 92.3 | 88.1 | 88.5 | 88.8 | 89.2 | 90.3 | 92.6 | 93.1 | 93.9 | 96.2 | 96.2 | 96.2 | 96.2 |
-
+| Your total   |    A |    2 |    3 |    4 |    5 |    6 |    7 |    8 |    9 |   10 |    J |    Q |    K |
+|:-------------|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
+| 17 or less   | 16.7 | 35.3 | 37.4 | 39.6 | 41.9 | 42.3 | 26.2 | 24.4 | 22.9 | 23   | 23   | 23   | 23   |
+| 18           | 35.5 | 49.3 | 50.9 | 52.6 | 54.1 | 58.9 | 63.1 | 37.2 | 35   | 35.2 | 35.2 | 35.1 | 35.1 |
+| 19           | 54.4 | 62.7 | 63.9 | 65   | 66.3 | 69.5 | 76.9 | 73.3 | 46.7 | 47.2 | 47.3 | 47.2 | 47.2 |
+| 20           | 73.3 | 75.7 | 76.4 | 77.1 | 78.1 | 80.1 | 84.8 | 86.1 | 81.9 | 59.4 | 59.4 | 59.4 | 59.4 |
+| 21           | 92.3 | 88.1 | 88.5 | 88.8 | 89.2 | 90.3 | 92.6 | 93.1 | 93.9 | 96.2 | 96.2 | 96.2 | 96.2 |
 
 # Rules and Accuracy Check
 
@@ -132,7 +127,9 @@ The web app (`app.py`) takes the dealer's first card and your two cards and show
 
 The original Tkinter app is still in `Blackjack win/main/` (`GUI_homepage.py`). It has not been updated for the push and loss tables and the web app replaces it.
 
-# The Interface
+# The Original Tkinter Interface
+
+These screenshots are from the first version. The web app (`app.py`) replaces it.
 
 HOMEPAGE DESIGN
 ![image](https://github.com/aditya09092003/BlackJack_Win_Probability/assets/99025242/129a0aa7-77b9-4866-9f58-556199cffe36)
