@@ -1,8 +1,8 @@
 # BlackJack_Win_Probability
 
-**Live app:** [https://your-app-name.streamlit.app](https://blackjackwinprobability.streamlit.app/)
+**Live app:** [https://blackjackwinprobability.streamlit.app](https://blackjackwinprobability.streamlit.app/)
 
-Simulated blackjack odds: the chance of winning, pushing and losing a hand against every dealer card, from a 6-deck shoe with the dealer peeking for blackjack. Every number is checked against an exact calculation (worst error 0.74 percentage points). Try it with `streamlit run app.py`.
+Simulated blackjack odds: the chance of winning, pushing and losing a hand against every dealer card, from a 6-deck shoe with the dealer peeking for blackjack. Every number is checked against an exact calculation (worst error 0.74 percentage points), and a Streamlit web app (`app.py`) looks up any starting hand.
 
 For example, with an 18 (an 8 and a 10) against a dealer 6:
 
@@ -101,28 +101,9 @@ Every number was then checked against an exact calculation of the same rules (a 
 
 What is left is simulation noise. The hit table averages 10 runs while the others average 500, which is why its error is the largest.
 
-## What was wrong in the first version
+# What's in the Repo
 
-The first version was checked the same way (under its own infinite-deck rules): 325 of its 2,405 numbers (13.5%) were more than 2 points off, with an average error of 1.02 points and a worst error of 22.6 points.
-
-1. **Dealer with an ace (`getsum`).** The branches that handle an ace disagreed on whether the dealer stands or hits on soft 17, so hands ending on 17 were mis-counted. For a dealer ace, a final 17 appeared 0.7% of the time instead of about 13%, and for a dealer 6 it was off by about 9 points.
-2. **Hitting a pair of aces (`hit`).** The test `card1 != 'A' or card2 != 'A'` should have been `and`. Because of this, the pair of aces skipped the draw and always returned 12, an average error of 16 points on that row (up to 22.6 points against a dealer 7).
-3. **Ties counted as wins.** The "win %" included pushes, so standing on 21 showed 100%.
-4. **Infinite deck and no peek.** Cards were drawn with replacement, and a dealer blackjack was counted as an ordinary 21.
-5. **File paths in the GUI.** The files used Windows-style `\\` paths, so the app crashed on Mac and Linux. They now resolve relative to the script.
-
-# Run It
-
-```bash
-pip install -r requirements.txt
-streamlit run app.py                      # the web app
-cd "Blackjack win/main"
-python check_tables.py                    # checks every table against the exact calculation (about 3 s)
-python dataset1_creation.py               # rebuilds Dataset 1 (under 1 min)
-python dataset2_creation.py               # rebuilds Dataset 2 (under 1 min)
-python dataset3_creation.py               # rebuilds Dataset 3 (under 2 min)
-```
-
-Each script writes its raw files and its cleaned (averaged) files to `Blackjack win/datasets/`.
-
-The web app (`app.py`) takes the dealer's first card and your two cards and shows the win, push and lose chances if you stand or hit once, and how the dealer's hand ends. It reads the cleaned tables, so it needs nothing but the repo.
+- **`app.py`**: a Streamlit web app. Pick the dealer's first card and your two cards and it shows the win, push and lose chances if you stand or hit once, and how the dealer's hand ends.
+- **`Blackjack win/main/dataset1_creation.py`, `dataset2_creation.py`, `dataset3_creation.py`**: the simulations that build the three tables (dealer's final hand, stand, hit once).
+- **`Blackjack win/main/check_tables.py`**: the exact calculation every table is checked against.
+- **`Blackjack win/datasets/`**: the raw simulation output and the cleaned tables, with separate win, push and loss files.
