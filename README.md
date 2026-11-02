@@ -1,4 +1,4 @@
-# BlackJack_Win_Probability
+# Blackjack Win Probability
 
 **Live app:** [https://blackjackwinprobability.streamlit.app](https://blackjackwinprobability.streamlit.app/)
 
